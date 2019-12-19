@@ -10,4 +10,4 @@ Build the application according to the specifications detailed in the PDF docume
 
 Submit your completed assignment by doing either of the following:
 1. Publish on your own Github public repository
-2. zip up the project and send to your HR contact
+2. zip up the project (excluding the node_modules folder) and send to your HR contact
