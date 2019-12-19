@@ -2,7 +2,7 @@
 Angular exercise for UI interview candidates
 
 # Instructions
-This repository contains instructions and wireframe diagrams that we are asking candidates to complete.
+This repository contains instructions and wireframe diagrams for the assignment  that we are asking candidates to complete.
 
 Please download the PDF and 2 images locally for easier viewing (you'll need to enlarge the images to see the wireframes clearly).
 
