@@ -1,0 +1,31 @@
+<form [formGroup]="postForm" (ngSubmit)="submitPost()" novalidate>
+  <fieldset class="form-group" [attr.disabled]="isActionHappening">
+    <label for="title">Title</label>
+    <input autofocus type="text" name="title" id="title" class="form-control" required formControlName="title">
+    <app-control-messages [control]="form.title"></app-control-messages>
+  </fieldset>
+
+  <fieldset class="form-group" [attr.disabled]="isActionHappening">
+    <label for="body">Message</label>
+    <textarea name="body" id="body" class="form-control" rows="6" required formControlName="body"></textarea>
+    <app-control-messages [control]="form.body"></app-control-messages>
+  </fieldset>
+
+  <fieldset class="form-group">
+    <div class="cta-actions">
+      <button type="button" class="btn btn-secondary" tabindex="-1" *ngIf="isEditMode" (click)="deletePost()">
+        Delete
+      </button>
+
+      <span>
+        <button type="submit" class="btn btn-primary" [attr.disabled]="isButtonDisabled" [ngSwitch]="saving">
+          <span *ngSwitchCase="true">Saving...</span>
+          <span *ngSwitchDefault>Save</span>
+        </button>
+        <button type="button" class="btn" [attr.disabled]="isButtonDisabled" (click)="cancel()">
+          Cancel
+        </button>
+      </span>
+    </div>
+  </fieldset>
+</form>

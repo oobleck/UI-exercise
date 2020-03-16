@@ -1,0 +1,68 @@
+<aside class="alert alert-success" role="alert" *ngIf="showSavedMessage">
+  The Post was successfully updated.
+</aside>
+<table class="table table-hover table-sm" *ngIf="posts$ | async as posts; else loader">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Post</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let post of posts | slice:currentPage:nextPage; index as pp">
+      <td class="col-xs-3">
+        <h6>{{ usersHash[post.userId].name }}</h6>
+        <a href="http://{{ usersHash[post.userId].website }}" target="_blank">
+          {{ usersHash[post.userId].company.name }}
+        </a>
+      </td>
+      <td>
+        <h5>
+          <a [routerLink]="['/posts/edit/', post.id]" *ngIf="canEditPost(post) && (isLoggedIn$ | async)">
+            {{ post.title }}
+          </a>
+          <span *ngIf="!(canEditPost(post) && (isLoggedIn$ | async))">{{ post.title }}</span>
+        </h5>
+        {{ post.body }}
+      </td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="50">
+        <ng-content *ngTemplateOutlet="pagination"></ng-content>
+      </td>
+    </tr>
+  </tfoot>
+</table>
+
+<ng-template #loader>
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border text-info" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #pagination>
+  <nav class="float-right" aria-label="Pagination">
+    <ul class="pagination">
+      <li class="page-item" [class.disabled]="currentPaginatedPage === 0">
+        <a class="page-link" (click)="goToPage(currentPaginatedPage - 1)">
+          &#8592;
+        </a>
+      </li>
+      <li class="page-item" [class.active]="currentPaginatedPage === pageNumber"
+        [class.d-none]="!showPageNumbers" *ngFor="let page of pages; index as pageNumber">
+        <a class="page-link" (click)="goToPage(pageNumber)">
+          {{ page }}
+        </a>
+      </li>
+      <li class="page-item" [class.disabled]="currentPaginatedPage === pages.length - 1">
+        <a class="page-link" (click)="goToPage(currentPaginatedPage + 1)">
+          &#8594;
+        </a>
+      </li>
+    </ul>
+  </nav>
+</ng-template>

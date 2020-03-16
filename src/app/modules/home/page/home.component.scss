@@ -1,0 +1,13 @@
+th:first-child {
+  width: 10rem;
+}
+
+td {
+  height: 6rem;
+}
+
+.pagination {
+  .page-link {
+    cursor: pointer;
+  }
+}

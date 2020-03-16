@@ -1,0 +1,12 @@
+:host {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+
+  form {
+    width: 33.333%;
+  }
+}
