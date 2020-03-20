@@ -75,7 +75,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
       console.log('Interceptor: updatePost', request);
 
       // Replace matching post with updated post
-      posts.map((post) => (post.id === modPost.id ? modPost : post));
+      const oldPost = posts.find((post) => post.id === modPost.id);
+      Object.assign(oldPost, modPost);
 
       return ok(modPost);
     }
