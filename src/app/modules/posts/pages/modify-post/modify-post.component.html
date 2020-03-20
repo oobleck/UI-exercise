@@ -22,7 +22,7 @@
           <span *ngSwitchCase="true">Saving...</span>
           <span *ngSwitchDefault>Save</span>
         </button>
-        <button type="button" class="btn" [attr.disabled]="isButtonDisabled" (click)="cancel()">
+        <button type="button" class="btn" [attr.disabled]="isActionHappening" (click)="cancel()">
           Cancel
         </button>
       </span>

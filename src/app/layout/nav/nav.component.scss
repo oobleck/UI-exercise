@@ -5,3 +5,20 @@
 .page-title {
   margin-right: 1rem;
 }
+
+button .small-size {
+  display: none;
+}
+
+@media screen and (max-width: 800px) {
+  .new-post-button {
+    background: red;
+
+    & .small-size {
+      display: inline-block;
+    }
+    & .full-size {
+      display: none;
+    }
+  }
+}

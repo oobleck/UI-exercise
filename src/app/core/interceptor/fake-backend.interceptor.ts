@@ -78,7 +78,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
       const oldPost = posts.find((post) => post.id === modPost.id);
       Object.assign(oldPost, modPost);
 
-      return ok(modPost);
+      return ok(oldPost);
     }
 
     function addPost(): Observable<HttpEvent<any>> {

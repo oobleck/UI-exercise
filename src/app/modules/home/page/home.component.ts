@@ -85,6 +85,9 @@ export class HomeComponent extends subscribedContainerMixin() implements OnInit 
 
         if (this.showSavedMessage) {
           this.location.replaceState('/home');
+          window.setTimeout(() => {
+            this.showSavedMessage = false;
+          }, 3000);
         }
       });
   }

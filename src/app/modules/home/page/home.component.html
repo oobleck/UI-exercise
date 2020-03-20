@@ -10,8 +10,8 @@
   </thead>
   <tbody>
     <tr *ngFor="let post of posts | slice:currentPage:nextPage; index as pp">
-      <td class="col-xs-3">
-        <h6>{{ usersHash[post.userId].name }}</h6>
+      <td>
+        <span class="h6">{{ usersHash[post.userId].name }}</span>
         <a href="http://{{ usersHash[post.userId].website }}" target="_blank">
           {{ usersHash[post.userId].company.name }}
         </a>

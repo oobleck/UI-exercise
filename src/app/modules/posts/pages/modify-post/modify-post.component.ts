@@ -16,6 +16,7 @@ export class ModifyPostComponent extends subscribedContainerMixin() implements C
   postId: number;
   isEditMode = false;
   saving = false;
+  deleting = false;
 
   get form(): { [key: string]: AbstractControl } {
     return this.postForm.controls;
@@ -63,7 +64,7 @@ export class ModifyPostComponent extends subscribedContainerMixin() implements C
 
   @HostListener('window:beforeunload')
   canDeactivate(): Observable<boolean> | boolean {
-    return this.postForm.pristine || this.saving;
+    return this.postForm.pristine || this.saving || this.deleting;
   }
 
   submitPost() {
@@ -88,6 +89,7 @@ export class ModifyPostComponent extends subscribedContainerMixin() implements C
   }
 
   deletePost() {
+    this.deleting = true;
     const confirmation = window.confirm('WARNING: Are you sure you want to delete this post?');
 
     if (confirmation) {
